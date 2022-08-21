@@ -22,8 +22,9 @@ export const SecondPage = () => {
   return (
     <>
       <h1>Users names: </h1>
-      <button onClick={getUsers}>GET USERS:</button>
-      {displayUsers()}s{/* pamietaj o wywolaniu () !! */}
+      <button onClick={getUsers}>GET USERS</button>
+      {/* pamietaj o wywolaniu () !! */}
+      {displayUsers()}
     </>
   );
 };

@@ -5,8 +5,12 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useMemo } from "react";
 
+import { Context } from "Providers/ContextProvider";
+import { useContext } from "react";
+
 export const FirstPage = () => {
   const [titles, setTitles] = useState<any>();
+  const { users } = useContext(Context);
 
   const getTitles = () => {
     axios
@@ -27,6 +31,7 @@ export const FirstPage = () => {
 
   return (
     <>
+      {users}
       <h1>Titles:</h1>
       {displayTitles}
     </>

@@ -1,14 +1,15 @@
 // TODO: *** 1) WYSWIETLANIE IMION Z WLASNEJ BAZY DANYCH; 2) DODAWANIE KOLEJNYCH IMION PRZY POMOCY INPUTA; 3) USUWANIE 4) DODAWANIE WYBRANEGO DO CONTEXTU ***
 
-import React, { useCallback, useEffect } from "react";
-import { useState } from "react";
+import React, { useCallback, useEffect, useState, useContext } from "react";
 
+import { Context } from "Providers/ContextProvider";
 interface Person {
   id: number;
   name: string;
 }
 
-export const ThirdPage = () => {
+export const ThirdPage: React.FC = () => {
+  const { addUser } = useContext(Context);
   const [newName, setNewName] = useState<Person>();
 
   const [names, setNames] = useState<any>([
@@ -42,6 +43,11 @@ export const ThirdPage = () => {
     [newName, names]
   );
 
+  const addToContext = (value: any) => {
+    console.log(value.name);
+    addUser(value.name);
+  };
+
   return (
     <>
       <input onChange={handleNewName} placeholder='Podaj imie' />
@@ -56,11 +62,11 @@ export const ThirdPage = () => {
             flexDirection: "column",
           }}
         >
-          {names.map((person: any, index: any) => (
+          {names.map((persona: any, index: any) => (
             <>
-              <li>{person.name}</li>
+              <li>{persona.name}</li>
               <button onClick={(e) => deleteName(index, e)}>Delete</button>
-              <button>Add to context</button>
+              <button onClick={(e) => addToContext(e)}>Add to context</button>
             </>
           ))}
         </ol>

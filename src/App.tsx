@@ -14,9 +14,11 @@ import { FourthPage } from "components/Pages/FourthPage/FourthPage";
 import { SecondPage } from "components/Pages/SecondPage/SecondPage";
 import { ThirdPage } from "components/Pages/ThirdPage/ThirdPage";
 
+import { ContextProvider } from "Providers/ContextProvider";
+
 function App() {
   return (
-    <>
+    <ContextProvider>
       <Router>
         <NavBar />
         <div className={css.navbar}>
@@ -60,15 +62,30 @@ function App() {
           >
             Third Page
           </NavLink>
+
+          <NavLink
+            to='/fourthpage'
+            className={css.navlink}
+            style={({ isActive }) =>
+              isActive
+                ? {
+                    borderBottom: "3px red solid",
+                  }
+                : { color: "#545e6f", background: "#f0f0f0" }
+            }
+          >
+            Fourth Page
+          </NavLink>
         </div>
 
         <Routes>
           <Route path='/firstpage' element={<FirstPage />} />
           <Route path='/secondpage' element={<SecondPage />} />
           <Route path='/thirdpage' element={<ThirdPage />} />
+          <Route path='/fourthpage' element={<FourthPage />} />
         </Routes>
       </Router>
-    </>
+    </ContextProvider>
   );
 }
 
