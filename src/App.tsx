@@ -14,11 +14,11 @@ import { FourthPage } from "components/Pages/FourthPage/FourthPage";
 import { SecondPage } from "components/Pages/SecondPage/SecondPage";
 import { ThirdPage } from "components/Pages/ThirdPage/ThirdPage";
 
-import { ContextProvider } from "Providers/ContextProvider";
+import { NameContextProvider } from "Providers/NameContext";
 
 function App() {
   return (
-    <ContextProvider>
+    <NameContextProvider>
       <Router>
         <NavBar />
         <div className={css.navbar}>
@@ -85,7 +85,7 @@ function App() {
           <Route path='/fourthpage' element={<FourthPage />} />
         </Routes>
       </Router>
-    </ContextProvider>
+    </NameContextProvider>
   );
 }
 

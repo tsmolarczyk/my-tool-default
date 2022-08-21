@@ -2,14 +2,15 @@
 
 import React, { useCallback, useEffect, useState, useContext } from "react";
 
-import { Context } from "Providers/ContextProvider";
+import { NameContext } from "Providers/NameContext";
 interface Person {
   id: number;
   name: string;
 }
 
 export const ThirdPage: React.FC = () => {
-  const { addUser } = useContext(Context);
+  const { addName } = useContext(NameContext);
+
   const [newName, setNewName] = useState<Person>();
 
   const [names, setNames] = useState<any>([
@@ -44,8 +45,8 @@ export const ThirdPage: React.FC = () => {
   );
 
   const addToContext = (value: any) => {
-    console.log(value.name);
-    addUser(value.name);
+    console.log("first");
+    addName(value.name);
   };
 
   return (
@@ -66,7 +67,14 @@ export const ThirdPage: React.FC = () => {
             <>
               <li>{persona.name}</li>
               <button onClick={(e) => deleteName(index, e)}>Delete</button>
-              <button onClick={(e) => addToContext(e)}>Add to context</button>
+              <button
+                onClick={(e) => {
+                  addToContext(e);
+                  console.log(e.target);
+                }}
+              >
+                Add to context
+              </button>
             </>
           ))}
         </ol>
