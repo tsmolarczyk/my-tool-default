@@ -45,8 +45,8 @@ export const ThirdPage: React.FC = () => {
   );
 
   const addToContext = (value: any) => {
-    console.log("first");
-    addName(value.name);
+    console.log(value);
+    addName(names.index);
   };
 
   return (
@@ -70,7 +70,6 @@ export const ThirdPage: React.FC = () => {
               <button
                 onClick={(e) => {
                   addToContext(e);
-                  console.log(e.target);
                 }}
               >
                 Add to context
